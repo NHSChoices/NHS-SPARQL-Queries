@@ -1,0 +1,50 @@
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?timelabel ?value
+WHERE {?s a qb:Observation;
+          qb:dataSet <http://nhs.publishmydata.com/data/staff-recommended> .
+  ?s <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> ?time .
+  ?s <http://nhs.publishmydata.com/def/dimension/refOrganisation> <http://nhs.publishmydata.com/id/organisation/RTQ> .
+  ?s <http://nhs.publishmydata.com/def/measure-properties/score> ?value .
+  ?time rdfs:label ?timelabel .
+}
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?trust ?timelabel ?value
+WHERE {?s a qb:Observation;
+          qb:dataSet <http://nhs.publishmydata.com/data/staff-recommended> .
+  ?s <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> ?time .
+  ?s <http://nhs.publishmydata.com/def/dimension/refOrganisation> <http://nhs.publishmydata.com/id/organisation/RTQ> .
+  ?s <http://nhs.publishmydata.com/def/measure-properties/score> ?value .
+  ?time rdfs:label ?timelabel .
+  <http://nhs.publishmydata.com/id/organisation/RTQ> rdfs:label ?trust .
+  
+}
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?trust ?timelabel ?value
+WHERE {?s a qb:Observation;
+          qb:dataSet <http://nhs.publishmydata.com/data/staff-recommended> .
+  ?s <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> ?time .
+  ?s <http://nhs.publishmydata.com/def/dimension/refOrganisation> ?trust_id .
+  ?s <http://nhs.publishmydata.com/def/measure-properties/score> ?value .
+  ?time rdfs:label ?timelabel .
+  ?trust_id rdfs:label ?trust .
+}
+ORDER BY ?trust ?time
+PREFIX qb: <http://purl.org/linked-data/cube#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?trust1 ?time ?value1 ?trust2 ?value2
+WHERE {?s a qb:Observation;
+          qb:dataSet <http://nhs.publishmydata.com/data/staff-recommended> .
+  ?s <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> ?time .
+  ?s <http://nhs.publishmydata.com/def/dimension/refOrganisation> <http://nhs.publishmydata.com/id/organisation/RTQ> .
+  ?s <http://nhs.publishmydata.com/def/measure-properties/score> ?value1 .
+  ?x <http://purl.org/linked-data/sdmx/2009/dimension#refPeriod> ?time .
+  ?x <http://nhs.publishmydata.com/def/dimension/refOrganisation> <http://nhs.publishmydata.com/id/organisation/RTV> .
+  ?x <http://nhs.publishmydata.com/def/measure-properties/score> ?value2 .
+  ?time rdfs:label ?timelabel .
+  <http://nhs.publishmydata.com/id/organisation/RTQ> rdfs:label ?trust1 .
+         <http://nhs.publishmydata.com/id/organisation/RTV> rdfs:label ?trust2 .
+  
+}
